@@ -1,1 +1,53 @@
-<p>sidebar works!</p>
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" [routerLink]="['/pages', 'home']">
+        <div class="sidebar-brand-text mx-3">PRINCE Online Shop</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/pages', 'home']">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Home</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Elements
+    </div>
+
+    <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/pages', 'profile']">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Profile</span></a>
+    </li>
+
+    <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/pages', 'order']">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Order(s)</span></a>
+    </li>
+
+    <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/pages', 'product']">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Product(s)</span></a>
+    </li>
+
+    <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/pages', 'invoice']">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Invoice(s)</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+</ul>

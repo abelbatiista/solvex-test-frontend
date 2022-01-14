@@ -1,17 +1,24 @@
+// Angular Modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { ExceptionsComponent } from './exceptions.component';
 
+// Routing Modules
+import { ExceptionsRoutingModule } from './exceptions-routing.module';
+
+// User Components
+import { ExceptionsComponent } from './exceptions.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
   declarations: [
-    NotfoundComponent,
-    ExceptionsComponent
+    ExceptionsComponent,
+    NotfoundComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    ExceptionsRoutingModule
+  ],
+  exports: []
 })
 export class ExceptionsModule { }
