@@ -6,11 +6,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Routing Modules
 import { PagesRoutingModule } from './pages-routing.module';
 
-// Pipes Modules
-import { PipesModule } from '../pipes/pipes.module';
-
 // User Modules
 import { SharedModule } from '../shared/shared.module';
+
+// Pipes Modules
+import { PipesModule } from '../pipes/pipes.module';
 
 // User Components
 import { PagesComponent } from './pages.component';
@@ -19,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +28,15 @@ import { InvoiceComponent } from './invoice/invoice.component';
     ProfileComponent,
     OrderComponent,
     ProductComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     ReactiveFormsModule,
-    PipesModule,
-    SharedModule
+    SharedModule,
+    PipesModule
   ],
   exports: []
 })

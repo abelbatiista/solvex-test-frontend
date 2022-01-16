@@ -1,1 +1,16 @@
-<p>home works!</p>
+<h2>Home</h2>
+<hr>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let product of products!" class="col">
+        <div class="card h-100 ">
+            <img [src]="product.image | image: 'product'" class="card-img-top" [alt]="product.name">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name}}</h5>
+                <p class="card-text">{{ product.price | currency: 'DOP' }}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+</div>

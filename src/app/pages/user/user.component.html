@@ -1,13 +1,13 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Products</h1>
-    <p class="mb-4">Those are the products we have on the stock.</p>
+    <h1 class="h3 mb-2 text-gray-800">Users</h1>
+    <p class="mb-4">Those are the users we have signed up in database.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Users</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,21 +19,27 @@
                                     <tr role="row">
                                         <th class="sorting sorting_asc w100">Image</th>
                                         <th class="sorting">Name</th>
-                                        <th class="sorting">Price</th>
+                                        <th class="sorting">Lastname</th>
+                                        <th class="sorting">Email</th>
+                                        <th class="sorting">Role</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th rowspan="1" colspan="1">Image</th>
                                         <th rowspan="1" colspan="1">Name</th>
-                                        <th rowspan="1" colspan="1">Price</th>
+                                        <th class="sorting">Lastname</th>
+                                        <th class="sorting">Email</th>
+                                        <th class="sorting">Role</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    <tr *ngFor="let product of products" class="odd">
-                                        <td class="text-center"><img class="avatar" [src]="product.image | image: 'product'" [alt]="product.name"></td>
-                                        <td>{{ product.name }}</td>
-                                        <td>{{ product.price | currency: 'DOP' }}</td>
+                                    <tr *ngFor="let user of users" class="odd">
+                                        <td class="text-center"><img class="avatar" [src]="user!.image! | image: 'user'" [alt]="user.name"></td>
+                                        <td>{{ user.name }}</td>
+                                        <td>{{ user.lastname }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.role }}</td>
                                     </tr>
                                 </tbody>
                             </table>

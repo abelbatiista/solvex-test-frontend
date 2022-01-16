@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  public NAME: string | undefined;
+  public DATE: Date | undefined;
 
-  ngOnInit(): void {
+  public constructor() { }
+
+  public ngOnInit(): void {
+    this.fill();
+  }
+
+  private fill(): void {
+    this.NAME = 'ABel Batista Rodríguez';
+    this.DATE = new Date();
   }
 
 }

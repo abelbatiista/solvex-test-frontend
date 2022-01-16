@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
 export class ImagePipe implements PipeTransform {
 
   public transform(image: string, type: string): string {
-    console.log(image);
     if(!image) {
       return `${environment.base_url}/file/download/${type}/no-image`;
     }

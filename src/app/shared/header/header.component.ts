@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,19 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit {
 
+  public user: User | undefined;
+
   public constructor(
     private _authService: AuthService,
     private _router: Router
   ) { }
 
   public ngOnInit(): void {
+    this.getUser();
+  }
+
+  private getUser(): void {
+    this.user = this._authService.user;
   }
 
   public logout(): void {

@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   public login({email, password}: any): Observable<any> {
-    console.log(email, password);
+    console.log(email, password, 'servicio');
     return this._http.post<any>(`${environment.base_url}/auth`, {email, password})
     .pipe(
       tap((data): any => {

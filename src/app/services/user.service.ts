@@ -14,7 +14,7 @@ export class UserService {
     private _http: HttpClient
   ) { }
 
-  public get(): Observable<User> {
+  public get(): Observable<User[]> {
     return this._http.get<any>(`${environment.base_url}/user`)
     .pipe(
       map((data): any => {

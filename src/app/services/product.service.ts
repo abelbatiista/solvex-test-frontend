@@ -14,7 +14,7 @@ export class ProductService {
     private _http: HttpClient
   ) { }
 
-  public get(): Observable<Product> {
+  public get(): Observable<Product[]> {
     return this._http.get<any>(`${environment.base_url}/product`)
     .pipe(
       map((data): any => {

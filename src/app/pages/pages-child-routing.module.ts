@@ -8,12 +8,14 @@ import { OrderComponent } from "./order/order.component";
 import { ProfileComponent } from './profile/profile.component';
 import { ProductComponent } from './product/product.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'order', component: OrderComponent},
     {path: 'product', component: ProductComponent},
+    {path: 'user', component: UserComponent},
     {path: 'invoice', component: InvoiceComponent},
     {path: '', pathMatch: 'full', redirectTo: 'home'}
 ]
