@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public constructor(
+    private _authService: AuthService,
+    private _router: Router
+  ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+  }
+
+  public logout(): void {
+    this._authService.logout().subscribe((): any => {
+      this.callSwal('success', 'Succesfully', 'User logged out!');
+      this._router.navigate(['/login']);
+    });
+  }
+
+  private callSwal(icon: any, title: string, text: string): void {
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+    })
   }
 
 }

@@ -6,17 +6,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Routing Modules
 import { AppRoutingModule } from './app-routing.module';
 
+// Pipes Modules
+import { PipesModule } from './pipes/pipes.module';
+
 // User Modules
 import { AuthModule } from './auth/auth.module';
 import { ExceptionsModule } from './exceptions/exceptions.module';
 import { SharedModule } from './shared/shared.module';
+import { PagesModule } from './pages/pages.module';
 
 // Providers
 import { UserInterceptor } from './interceptors/user.interceptor';
 
 // Angular Components
 import { AppComponent } from './app.component';
-import { PagesModule } from './pages/pages.module';
 
 // User Components
 

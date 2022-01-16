@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,71 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public formSubmitted: boolean = false;
 
-  ngOnInit(): void {
+  public form: any | FormBuilder;
+
+  public constructor(
+    private _authService: AuthService,
+    private _formBuilder: FormBuilder,
+    private _router: Router
+  ) { 
+    this.initializeForm();
+  }
+
+  public ngOnInit(): void {
+  }
+
+  private initializeForm(): void {
+    this.form = this._formBuilder.group({
+      email: [localStorage.getItem('email') || '', [ Validators.required, Validators.email ]],
+      password: ['', [ Validators.required ]],
+      remember: [false]
+    });
+  }
+
+  public login(): void {
+    const { email, password } = this.form.value;
+
+    this.formSubmitted = true;
+
+    if(this.form.invalid) {
+      return;
+    }
+
+    this._authService.login({email, password}).subscribe((data): any => {
+
+      console.log(data);
+
+      if(this.form.get('remember').value){
+        localStorage.setItem('email', this.form.get('email').value);
+      }
+      else {
+        localStorage.removeItem('email');
+      }
+
+      this.callSwal('success', 'Succesfully', 'User logged!');
+      this._router.navigate(['/']);
+    }, (error): any => {
+      this.callSwal('error', 'Error!', error.error.message);
+    });
+  }
+
+  public invalidField(field: string): boolean {
+    if(this.form.get(field).invalid && this.formSubmitted) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  private callSwal(icon: any, title: string, text: string): void {
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+    })
   }
 
 }

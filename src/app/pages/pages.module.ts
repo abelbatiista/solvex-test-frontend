@@ -6,6 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Routing Modules
 import { PagesRoutingModule } from './pages-routing.module';
 
+// Pipes Modules
+import { PipesModule } from '../pipes/pipes.module';
+
 // User Modules
 import { SharedModule } from '../shared/shared.module';
 
@@ -30,6 +33,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
     CommonModule,
     PagesRoutingModule,
     ReactiveFormsModule,
+    PipesModule,
     SharedModule
   ],
   exports: []

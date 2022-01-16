@@ -12,29 +12,35 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Sign Up!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" autocomplete="off" [formGroup]="form" (ngSubmit)="signUp()">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                                        <input type="text" class="form-control form-control-user" id="name" placeholder="Name" formControlName="name">
+                                        <p *ngIf="invalidField('name')" class="text-danger">Name is required.</p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                                        <input type="text" class="form-control form-control-user" id="lastname" placeholder="Last Name" formControlName="lastname">
+                                        <p *ngIf="invalidField('lastname')" class="text-danger">Lastname is required.</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                                    <input type="email" class="form-control form-control-user" id="email" placeholder="Email" formControlName="email">
+                                    <p *ngIf="invalidField('email')" class="text-danger">Email is required and valid.</p>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user" id="password" placeholder="Password" formControlName="password">
+                                        <p *ngIf="invalidField('password')" class="text-danger">Password is required.</p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        <input type="password" class="form-control form-control-user" id="confirmPassword" placeholder="Confirm Password" formControlName="confirmPassword">
+                                        <p *ngIf="invalidField('confirmPassword')" class="text-danger">Confirm Password is required.</p>
                                     </div>
                                 </div>
-                                <a [routerLink]="['/pages', 'home']" class="btn btn-primary btn-user btn-block">
+                                <p *ngIf="invalidPasswords()" class="text-danger">Passwords are not the same.</p>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Sign up
-                                </a>
+                                </button>
                                 <hr>
                             </form>
                             <div class="text-center">

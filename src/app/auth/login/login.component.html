@@ -17,23 +17,24 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Log In!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" autocomplete="off" [formGroup]="form" (ngSubmit)="login()">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control form-control-user" id="email" placeholder="Email" formControlName="email">
+                                            <p *ngIf="invalidField('email')" class="text-danger">Email is required.</p>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="password" placeholder="Password" formControlName="password">
+                                            <p *ngIf="invalidField('password')" class="text-danger">Password is required.</p>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <input type="checkbox" class="custom-control-input" id="customCheck" formControlName="password">
+                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a [routerLink]="['/pages', 'home']" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" [routerLink]="['/pages', 'home']" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
+                                        </button>
                                         <hr>
                                     </form>
                                     <div class="text-center">
