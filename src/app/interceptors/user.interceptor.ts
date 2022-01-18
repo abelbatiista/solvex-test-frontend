@@ -3,16 +3,39 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpHeaders,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class UserInterceptor implements HttpInterceptor {
 
   public constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+  public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+
+    const token: string = localStorage.getItem('token') || '';
+
+    const headers = new HttpHeaders({
+      'x-token': token
+    });
+
+    const requestClone: any = request.clone({
+      headers
+    });
+
+    return next.handle(requestClone)
+      .pipe(
+        catchError(this.errorHandler)
+      );
   }
+
+  private errorHandler(error: HttpErrorResponse): Observable<never> {
+    console.warn(`Uf! Something wrong...\n${error.message}`);
+    return throwError(error.message);
+  }
+
 }

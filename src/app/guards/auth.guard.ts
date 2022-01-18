@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -11,7 +11,8 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   public constructor(
     private _authService: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _ngZone: NgZone
   ) { }
 
   public canActivate(
@@ -20,7 +21,9 @@ export class AuthGuard implements CanActivate, CanLoad {
       return this._authService.loginCheck().pipe(
         tap((data): any => {
           if(!data) {
-            this._router.navigate(['/login'])
+            this._ngZone.run((): any => {
+              this._router.navigate(['/login']);
+            });
           }
         })
       );
@@ -31,7 +34,9 @@ export class AuthGuard implements CanActivate, CanLoad {
       return this._authService.loginCheck().pipe(
         tap((data): any => {
           if(!data) {
-            this._router.navigate(['/login'])
+            this._ngZone.run((): any => {
+              this._router.navigate(['/login'])
+            });
           }
         })
       );

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
   public constructor(
     private _authService: AuthService,
     private _formBuilder: FormBuilder,
-    private _router: Router
+    private _router: Router,
+    private _ngZone: NgZone
   ) { 
     this.initializeForm();
   }
@@ -53,7 +54,9 @@ export class LoginComponent implements OnInit {
       }
 
       this.callSwal('success', 'Succesfully', 'User logged!');
-      this._router.navigate(['/']);
+      this._ngZone.run((): any => {
+        this._router.navigate(['/']);
+      });
     }, (error): any => {
       this.callSwal('error', 'Error!', error.error.message);
     });

@@ -9,8 +9,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProductComponent } from './product/product.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { UserComponent } from './user/user.component';
+import { MessageComponent } from './message/message.component';
 
 const routes: Routes = [
+    {path: 'message/:id', component: MessageComponent},
     {path: 'home', component: HomeComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'order', component: OrderComponent},

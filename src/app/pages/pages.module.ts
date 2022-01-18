@@ -1,13 +1,17 @@
 // Angular Modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Socket Module
+import { SocketIoModule } from 'ngx-socket-io';
 
 // Routing Modules
 import { PagesRoutingModule } from './pages-routing.module';
 
 // User Modules
 import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../material/material.module';
 
 // Pipes Modules
 import { PipesModule } from '../pipes/pipes.module';
@@ -20,6 +24,7 @@ import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { UserComponent } from './user/user.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +34,15 @@ import { UserComponent } from './user/user.component';
     OrderComponent,
     ProductComponent,
     InvoiceComponent,
-    UserComponent
+    UserComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
     SharedModule,
     PipesModule
   ],
