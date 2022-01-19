@@ -1,8 +1,8 @@
 <h2>Home</h2>
 <hr>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div *ngFor="let product of products!" class="col">
-        <div class="card h-100 ">
+    <div *ngFor="let product of products!" class="col-12 col-sm-6 col-md-4 my-2">
+        <div class="card h-100">
             <img [src]="product.image | image: 'product'" class="card-img-top" [alt]="product.name">
             <div class="card-body">
                 <h5 class="card-title">{{ product.name}}</h5>

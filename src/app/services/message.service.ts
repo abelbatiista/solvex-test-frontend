@@ -70,6 +70,28 @@ export class MessageService {
     );
   }
 
+  public get(): Observable<Message> {
+    return this._http.get<any>(`${environment.base_url}/message`)
+    .pipe(
+      map((data): any => {
+        return data.messages;
+      })
+    );
+  }
+
+  public insert(message: Message): Observable<Message> {
+    return this._http.post<any>(`${environment.base_url}/message`, message)
+    .pipe(
+      map((data): any => {
+        return data.message;
+      })
+    );
+  }
+
+  public connectSocket(): void {
+    this._socket.emit('login');
+  }
+
   public sendMessage(message: Message): void {
     this._socket.emit('message', message);
   }

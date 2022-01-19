@@ -4,7 +4,7 @@
     margin: 20px auto;
 }
 
-.message_to {
+.message_from {
     display: block;
     border-radius: 15px;
     background-color: #0b5894;
@@ -17,7 +17,7 @@
     word-wrap: break-word;
 }
 
-.message_from {
+.message_to {
     display: block;
     float: right;
     border-radius: 15px;

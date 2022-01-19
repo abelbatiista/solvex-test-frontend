@@ -1,6 +1,6 @@
 <mat-card class="card">
     <mat-card-header>
-        <mat-card-title>Users</mat-card-title>
+        <mat-card-title>Chats</mat-card-title>
     </mat-card-header>
     <mat-selection-list #usersList [multiple]="false" class="list" (selectionChange)="openChat($event, usersList.selectedOptions.selected[0].value)">
         <mat-list-option *ngFor="let user of users | keyvalue" [value]="user">

@@ -37,13 +37,13 @@
             <span>Profile</span></a>
     </li>
 
-    <li class="nav-item" routerLinkActive="active">
+    <li class="nav-item" routerLinkActive="active" *ngIf="userRole === 'ADMIN_ROLE'">
         <a class="nav-link" [routerLink]="['/pages', 'user']">
             <i class="fas fa-users"></i>
             <span>User(s)</span></a>
     </li>
 
-    <li class="nav-item" routerLinkActive="active">
+    <li class="nav-item" routerLinkActive="active" *ngIf="userRole === 'ADMIN_ROLE'">
         <a class="nav-link" [routerLink]="['/pages', 'product']">
             <i class="fab fa-product-hunt"></i>
             <span>Product(s)</span></a>
