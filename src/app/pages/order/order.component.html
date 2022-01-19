@@ -1,1 +1,67 @@
-<p>order works!</p>
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Orders</h1>
+    <p class="mb-4">Those are the orders you have.</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-6">
+                    <h3 class="m-0 font-weight-bold text-dark">Orders</h3>
+                </div>
+                <div class="col-6 text-right">
+                    <button role="button" class="btn btn-dark btn-icon-split" [routerLink]="['/pages', 'order', 'add']">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Add</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting sorting_asc">Brand</th>
+                                        <th class="sorting">Number</th>
+                                        <th class="sorting">Expiration</th>
+                                        <th class="sorting">CVV</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th class="sorting sorting_asc">Location</th>
+                                        <th class="sorting">Method</th>
+                                        <th class="sorting">User</th>
+                                        <th class="sorting">Product</th>
+                                        <th class="sorting">Order</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody *ngIf="orders.length > 0">
+                                    <tr *ngFor="let order of orders" class="odd">
+                                        <td>{{ order.location }}</td>
+                                        <td>{{ order.method }}</td>
+                                        <td>{{ order.user }}</td>
+                                        <td>{{ order.product }}</td>
+                                        <td>{{ order.order }}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody *ngIf="orders.length == 0">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -15,6 +15,7 @@ import { MaterialModule } from '../material/material.module';
 
 // Pipes Modules
 import { PipesModule } from '../pipes/pipes.module';
+import { FilterModule } from '../filter';
 
 // User Components
 import { PagesComponent } from './pages.component';
@@ -25,6 +26,13 @@ import { ProductComponent } from './product/product.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { UserComponent } from './user/user.component';
 import { MessageComponent } from './message/message.component';
+import { ChatterComponent } from './message/chatter/chatter.component';
+import { ChatComponent } from './message/chat/chat.component';
+import { MethodComponent } from './method/method.component';
+import { LocationComponent } from './location/location.component';
+import { AddComponent as AddMethodComponent } from './method/add/add.component';
+import { AddComponent as AddLocationComponent } from './location/add/add.component';
+import { AddComponent as AddOrderComponent } from './order/add/add.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +43,14 @@ import { MessageComponent } from './message/message.component';
     ProductComponent,
     InvoiceComponent,
     UserComponent,
-    MessageComponent
+    MessageComponent,
+    ChatterComponent,
+    ChatComponent,
+    MethodComponent,
+    LocationComponent,
+    AddMethodComponent,
+    AddLocationComponent,
+    AddOrderComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +59,8 @@ import { MessageComponent } from './message/message.component';
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
-    PipesModule
+    PipesModule,
+    FilterModule
   ],
   exports: []
 })

@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Pipes Modules
 import { PipesModule } from './pipes/pipes.module';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { FilterModule } from './filter';
 
 // Modules
 import { SocketIoModule } from 'ngx-socket-io';
@@ -29,7 +31,7 @@ import { AppComponent } from './app.component';
 // User Components
 
 // Environment
-import { environment } from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,10 @@ import { environment } from 'src/environments/environment'
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    MaterialModule,
     SocketIoModule.forRoot( { url: environment.socket_url, options: {} }),
+    FilterPipeModule,
+    FilterModule,
+    MaterialModule,
     PagesModule,
     SharedModule,
     BrowserAnimationsModule

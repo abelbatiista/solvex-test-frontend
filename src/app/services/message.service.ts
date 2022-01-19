@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Subject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Message } from '../models/message.model';
 import { User } from '../models/user.model';
+import { AuthService } from './auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +18,71 @@ export class MessageService {
   chattingWith = new Subject<User>();
 
   public constructor(
-    private _socket: Socket
+    private _socket: Socket,
+    private _authService: AuthService,
+    private _http: HttpClient
   ) { }
 
-  public sendMessage(message: Message) {
+  private chatterFilter(userRole: string, chatterRole: string): boolean {
+    if(userRole === 'ADMIN_ROLE' && chatterRole === 'ADMIN_ROLE') {
+      return false;
+    }
+    else if(userRole === 'ADMIN_ROLE' && chatterRole !== 'ADMIN_ROLE') {
+      return true;
+    }
+    else if(userRole !== 'ADMIN_ROLE' && chatterRole !== 'ADMIN_ROLE') {
+      return false;
+    }
+    else if(userRole !== 'ADMIN_ROLE' && chatterRole === 'ADMIN_ROLE') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  private callMethod(): void {
+    this._socket.emit('users');
+  }
+
+  private getUsers(): Observable<User[]> {
+    return this._socket.fromEvent<User[]>('current_users')
+      .pipe(
+        map((data: User[]): any => {
+          console.log(data);
+          return data;
+      })
+    );
+  }
+
+  public getChatters(): Observable<User[]> {
+    return this._http.get<any>(`${environment.base_url}/user`)
+    .pipe(
+      tap((): any => {
+        this.user = this._authService.user;
+      }),
+      map((data): any => {
+        const users: User[] = data.users;
+        return users.filter((user: User): any => {
+          return this.chatterFilter(this.user!.role!, user.role!);
+        });
+      })
+    );
+  }
+
+  public sendMessage(message: Message): void {
     this._socket.emit('message', message);
   }
 
-  public getMessage(): Observable<void> {
-    return this._socket.fromEvent('message').pipe(map((data: any): any => data))
+  public getMessage(): Observable<Message> {
+    return this._socket.fromEvent<Message>('message')
+      .pipe(
+        map((data: any): any => data)
+    );
   }
 
-  public getUsers(): Observable<void> {
-    return this._socket.fromEvent('current_users').pipe(map((data: any): any => data))
+  public getMessages(): Observable<Message[]> {
+    return this._socket.fromEvent<Message[]>('messages').pipe(map((data: any): any => data));
   }
 
 }

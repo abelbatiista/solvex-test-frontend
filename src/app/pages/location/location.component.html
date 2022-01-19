@@ -1,0 +1,80 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Locations</h1>
+    <p class="mb-4">Those are the locations you have.</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-6">
+                    <h3 class="m-0 font-weight-bold text-dark">Locations</h3>
+                </div>
+                <div class="col-6 text-right">
+                    <button type="button" class="btn btn-dark btn-icon-split" [routerLink]="['/pages', 'location', 'add']">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Add</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting sorting_asc">Label</th>
+                                        <th class="sorting">Adress</th>
+                                        <th class="sorting">Street</th>
+                                        <th class="sorting">Number</th>
+                                        <th class="sorting">Sector</th>
+                                        <th class="sorting">City</th>
+                                        <th class="sorting">Province</th>
+                                        <th class="sorting">Country</th>
+                                        <th class="sorting">Postal Code</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr role="row">
+                                        <th class="sorting sorting_asc">Label</th>
+                                        <th class="sorting">Adress</th>
+                                        <th class="sorting">Street</th>
+                                        <th class="sorting">Number</th>
+                                        <th class="sorting">Sector</th>
+                                        <th class="sorting">City</th>
+                                        <th class="sorting">Province</th>
+                                        <th class="sorting">Country</th>
+                                        <th class="sorting">Postal Code</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody *ngIf="locations.length > 0">
+                                    <tr *ngFor="let location of locations" class="odd">
+                                        <td>{{ location.label }}</td>
+                                        <td>{{ location.adress }}</td>
+                                        <td>{{ location.street }}</td>
+                                        <td>{{ location.number }}</td>
+                                        <td>{{ location.sector }}</td>
+                                        <td>{{ location.city }}</td>
+                                        <td>{{ location.province }}</td>
+                                        <td>{{ location.country }}</td>
+                                        <td>{{ location.code }}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody *ngIf="locations.length == 0">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

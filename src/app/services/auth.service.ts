@@ -5,6 +5,7 @@ import { tap, map, catchError, delay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { Socket } from 'ngx-socket-io';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { Socket } from 'ngx-socket-io';
 export class AuthService {
 
   public user: User | undefined;
+  public users: User[] | undefined = [];
 
   public constructor(
     private _http: HttpClient,
@@ -34,6 +36,7 @@ export class AuthService {
     localStorage.setItem('token', data.token);
     const {id, name, lastname, email, password, role, image} = data.user;
     this.user = {id, name, lastname, email, password, role, image};
+    this._socket.emit('login');
   }
 
   public loginCheck(): Observable<boolean> {
@@ -52,13 +55,10 @@ export class AuthService {
   }
 
   public login({email, password}: any): Observable<any> {
-    console.log(email, password, 'servicio');
     return this._http.post<any>(`${environment.base_url}/auth`, {email, password})
     .pipe(
       tap((data): any => {
         this.doAfterLogin(data);
-        console.log(this.user);
-        this._socket.emit('sign_in', this.user);
       })
     );
   }

@@ -1,0 +1,65 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Payment Methods</h1>
+    <p class="mb-4">Those are the methods you have.</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-6">
+                    <h3 class="m-0 font-weight-bold text-dark">Methods</h3>
+                </div>
+                <div class="col-6 text-right">
+                    <button type="button" class="btn btn-dark btn-icon-split" [routerLink]="['/pages', 'method', 'add']">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Add</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting sorting_asc">Brand</th>
+                                        <th class="sorting">Number</th>
+                                        <th class="sorting">Expiration</th>
+                                        <th class="sorting">CVV</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th class="sorting sorting_asc">Brand</th>
+                                        <th class="sorting">Number</th>
+                                        <th class="sorting">Expiration</th>
+                                        <th class="sorting">CVV</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody *ngIf="methods.length > 0">
+                                    <tr *ngFor="let method of methods" class="odd">
+                                        <td>{{ method.brand }}</td>
+                                        <td>{{ method.number }}</td>
+                                        <td>{{ method.expiration }}</td>
+                                        <td>{{ method.cvv }}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody *ngIf="methods.length == 0">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

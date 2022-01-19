@@ -26,7 +26,7 @@
                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" formControlName="email">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="form!.invalid">Save</button>
+                    <button type="submit" class="btn btn-dark btn-block waves-effect waves-light m-r-10" [disabled]="form!.invalid">Save</button>
                 </form>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     <img *ngIf="image" [src]="image!" class="img-avatar">
                 </div>
                 <input class="m-3" type="file" (change)="changeImage($event)">
-                <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="!fileUpload" (click)="updateImage()">Save</button>
+                <button type="submit" class="btn btn-dark btn-block waves-effect waves-light m-r-10" [disabled]="!fileUpload" (click)="updateImage()">Save</button>
             </div>
         </div>
     </div>

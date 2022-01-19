@@ -1,5 +1,5 @@
 export interface Message {
-    from?: string;
+    from?: number;
     to: number;
     message: string;
     date: Date;

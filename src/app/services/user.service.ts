@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import { Socket } from 'ngx-socket-io';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { User } from '../models/user.model';
 export class UserService {
 
   public constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
+    private _socket: Socket
   ) { }
 
   public get(): Observable<User[]> {
@@ -35,6 +37,9 @@ export class UserService {
   public insert(user: User): Observable<User> {
     return this._http.post<any>(`${environment.base_url}/user`, user)
     .pipe(
+      tap((): any => {
+        this._socket.emit('sign_in', user);
+      }),
       map((data): any => {
         return data.user;
       })

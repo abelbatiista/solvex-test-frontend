@@ -1,0 +1,54 @@
+<div class="bg-gradient-dark centerChild">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Method: Add</h1>
+                            </div>
+                            <form class="user" autocomplete="off" [formGroup]="form" (ngSubmit)="add()">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="brand" placeholder="Brand" formControlName="brand">
+                                    <p *ngIf="invalidField('brand')" class="text-danger">Brand is required.</p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="number" placeholder="Number" formControlName="number">
+                                    <p *ngIf="invalidField('number')" class="text-danger">Number is required.</p>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="date" class="form-control form-control-user" id="expiration" placeholder="Expiration" formControlName="expiration">
+                                        <p *ngIf="invalidField('expiration')" class="text-danger">Expiration is required.</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="cvv" placeholder="CVV" formControlName="cvv">
+                                        <p *ngIf="invalidField('cvv')" class="text-danger">CVV is required.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 col-sm-6">
+                                        <button class="btn btn-dark btn-user btn-block" [routerLink]="['/pages', 'method']">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <button type="submit" class="btn btn-dark btn-user btn-block">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                                <hr>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

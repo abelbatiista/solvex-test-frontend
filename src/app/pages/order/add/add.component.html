@@ -1,0 +1,67 @@
+<div class="bg-gradient-dark centerChild">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Order: Add</h1>
+                            </div>
+                            <form class="user" autocomplete="off" [formGroup]="form" (ngSubmit)="add()">
+                                <div class="form-group row">
+                                    <label class="control-label">Locations</label>
+                                    <select class="form-control custom-select form-control-user" formControlName="location">
+                                        <option value="">Select</option>
+                                        <option *ngFor="let location of locations" [value]="location.id">{{ location.label }}</option>
+                                    </select>
+                                    <small class="form-control-feedback">Select the location.</small>
+                                    <p *ngIf="invalidField('location')" class="text-danger">Location is required.</p>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label">Methods</label>
+                                    <select class="form-control custom-select form-control-user" formControlName="method">
+                                        <option value="">Select</option>
+                                        <option *ngFor="let method of methods" [value]="method.id">{{ method.brand }}</option>
+                                    </select>
+                                    <small class="form-control-feedback">Select the method.</small>
+                                    <p *ngIf="invalidField('method')" class="text-danger">Method is required.</p>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label">Products</label>
+                                    <select class="form-control custom-select form-control-user" formControlName="product">
+                                        <option value="">Select</option>
+                                        <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+                                    </select>
+                                    <small class="form-control-feedback">Select the product.</small>
+                                    <p *ngIf="invalidField('product')" class="text-danger">Product is required.</p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="order" placeholder="Order" formControlName="order">
+                                    <p *ngIf="invalidField('order')" class="text-danger">Order is required.</p>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 col-sm-6">
+                                        <button class="btn btn-dark btn-user btn-block" [routerLink]="['/pages', 'order']">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <button type="submit" class="btn btn-dark btn-user btn-block">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                                <hr>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -10,9 +10,6 @@ export class ImagePipe implements PipeTransform {
     if(!image) {
       return `${environment.base_url}/file/download/${type}/no-image`;
     }
-    else if(image?.includes('http')){
-      return image;
-    }
     else if(image) {
       return `${environment.base_url}/file/download/${type}/${image}`;
     } 
