@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  base_url: 'http://localhost:8000/api',
-  socket_url: 'http://localhost:8000'
+  base_url: 'https://solvex-application.herokuapp.com/api',
+  socket_url: 'https://solvex-application.herokuapp.com'
 };
